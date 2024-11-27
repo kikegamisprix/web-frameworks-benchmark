@@ -28,10 +28,10 @@ git clone https://github.com/kikegamisprix/web-frameworks-benchmark.git
 cd web-frameworks-benchmark.git
 
 # コンテナの起動
-docker compose up -d
+docker-compose up -d
 
 # ベンチマークの実行
-docker compose run benchmark run /scripts/test.js
+docker-compose run benchmark run /scripts/test.js
 ```
 
 ## 📈 結果の確認
