@@ -50,7 +50,7 @@ services:
       retries: 3
 
   benchmark:
-    image: grafana/k6:latest
+    image: grafana/k6:0.56.0
     volumes:
       - ./k6:/scripts
     environment:
@@ -59,14 +59,14 @@ services:
       - influxdb
 
   influxdb:
-    image: influxdb:1.8
+    image: influxdb:1.11.8
     ports:
       - "8086:8086"
     environment:
       - INFLUXDB_DB=k6
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:11.4.0
     ports:
       - "3001:3000"
     environment:
