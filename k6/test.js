@@ -29,7 +29,7 @@ export const options = {
   ],
   // メトリクスの閾値設定
   thresholds: {
-    // 各フレームワークの95パーセンタイルが500ms未満であることを期待
+    // 各フレームワークのリクエストの95パーセンタイルが500ms未満であることを期待
     fastapi_duration: ["p(95)<500"],
     node_duration: ["p(95)<500"],
     go_duration: ["p(95)<500"],
@@ -120,7 +120,6 @@ export function handleSummary(data) {
       p90_duration: data.metrics.fastapi_duration.values["p(90)"], // 90パーセンタイルの応答時間
       p95_duration: data.metrics.fastapi_duration.values["p(95)"], // 95パーセンタイルの応答時間
       error_rate: data.metrics.fastapi_errors.values.rate, // エラー発生率
-      requests: data.metrics.fastapi_duration.values.count, // 総リクエスト数
     },
     // Node.jsのメトリクス
     node: {
@@ -128,7 +127,6 @@ export function handleSummary(data) {
       p90_duration: data.metrics.node_duration.values["p(90)"], // 90パーセンタイルの応答時間
       p95_duration: data.metrics.node_duration.values["p(95)"], // 95パーセンタイルの応答時間
       error_rate: data.metrics.node_errors.values.rate, // エラー発生率
-      requests: data.metrics.node_duration.values.count, // 総リクエスト数
     },
     // Goのメトリクス
     go: {
@@ -136,7 +134,6 @@ export function handleSummary(data) {
       p90_duration: data.metrics.go_duration.values["p(90)"], // 90パーセンタイルの応答時間
       p95_duration: data.metrics.go_duration.values["p(95)"], // 95パーセンタイルの応答時間
       error_rate: data.metrics.go_errors.values.rate, // エラー発生率
-      requests: data.metrics.go_duration.values.count, // 総リクエスト数
     },
     // Rustのメトリクス
     rust: {
@@ -144,7 +141,6 @@ export function handleSummary(data) {
       p90_duration: data.metrics.rust_duration.values["p(90)"], // 90パーセンタイルの応答時間
       p95_duration: data.metrics.rust_duration.values["p(95)"], // 95パーセンタイルの応答時間
       error_rate: data.metrics.rust_errors.values.rate, // エラー発生率
-      requests: data.metrics.rust_duration.values.count, // 総リクエスト数
     },
   };
 
